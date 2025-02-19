@@ -1,11 +1,44 @@
-import { ResumeInfoContext } from '@/context/resumeInfoContext';
-import React from 'react'
+import React, { useState } from 'react'
+import PersonalDetails from './forms/personalDetails';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, ArrowRight, LayoutGrid } from 'lucide-react';
+import Summary from './forms/summary';
 
 function FormSection() {
-  
+  const [activeFormIndex, setActiveFormIndex] = useState(1);
+  const [enabledNext, setEnabledNext] = useState(false);
+
   return (
     <div>
-      Form Section
+      <div className=' flex justify-between items-center'>
+        {/* theme button */}
+        <Button className='flex gap-2' size='sm'> <LayoutGrid /> Theme</Button>
+        <div className='flex gap-2'>
+          {activeFormIndex > 1 &&
+            <Button size='sm' onClick={() => setActiveFormIndex(activeFormIndex - 1)}> <ArrowLeft /> </Button>}
+
+          <Button 
+            disabled={!enabledNext}
+          className='flex gap-2' size='sm' onClick={()=>setActiveFormIndex(activeFormIndex + 1)}>Next
+            <ArrowRight /></Button>
+        </div>
+      </div>
+
+      
+      {activeFormIndex == 1 ? <PersonalDetails enabledNext={(v)=>setEnabledNext(v)} /> :
+       activeFormIndex==2 ? <Summary enabledNext={(v) => setEnabledNext(v)} /> : null}
+
+    
+
+
+      {/* Experience  */}
+
+
+      {/* Educational details  */}
+
+
+      {/* Skills  */}
+
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 function SkillsPreview({ resumeInfo }) {
     return (
-        <div className="w-full max-w-md mx-auto">
+        <div className="w-full mx-auto">
             <h2 className="text-center font-bold text-sm mb-2">Skills</h2>
             <hr className="border-black border-[1.5px]" />
 
