@@ -8,10 +8,13 @@ function SkillsPreview({ resumeInfo }) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
                 {resumeInfo?.skills.map((skills, index) => (
-                    <div key={index} className="flex flex-col sm:flex-row items-center sm:justify-between w-full">
-                        <h2 className="text-sm w-full sm:w-auto text-left">{skills?.name}</h2>
-                        <div className="h-2 bg-gray-200 w-full sm:w-[120px] mt-1 sm:mt-0">
-                            <div className="h-2 bg-black" style={{ width: `${skills?.rating}%` }}></div>
+                    <div key={index} className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-3 w-full">
+                        <h2 className="text-sm min-w-[80px] shrink-0">{skills?.name}</h2>
+                        <div className="h-2 bg-gray-200 w-full ">
+                            <div
+                                className="h-2 bg-black transition-all duration-300"
+                                style={{ width: `${skills?.rating}%` }}
+                            ></div>
                         </div>
                     </div>
                 ))}
@@ -19,5 +22,6 @@ function SkillsPreview({ resumeInfo }) {
         </div>
     );
 }
+
 
 export default SkillsPreview;

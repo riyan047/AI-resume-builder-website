@@ -22,5 +22,3 @@ function EducationPreview({ resumeInfo }) {
 }
 
 export default EducationPreview
-
-//2.14.16
