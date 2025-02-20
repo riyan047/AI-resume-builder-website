@@ -22,7 +22,6 @@ function Summary({ enabledNext }) {
         summary && setResumeInfo({
             ...resumeInfo,
             summary:summary
-            
         })
     }, [summary]);
 
