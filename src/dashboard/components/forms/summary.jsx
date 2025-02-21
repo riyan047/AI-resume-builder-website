@@ -3,7 +3,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { ResumeInfoContext } from '@/context/resumeInfoContext'
 import React, { useContext, useEffect, useState } from 'react'
 import GlobalApi from './../../../../service/GlobalApi';
-import { LoaderCircle } from 'lucide-react';
+import { Brain, LoaderCircle } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import { toast } from '@/hooks/use-toast';
 
@@ -16,12 +16,12 @@ function Summary({ enabledNext }) {
 
     const [loading, setLoading] = useState(false);
 
-    const params =useParams();
+    const params = useParams();
 
     useEffect(() => {
         summary && setResumeInfo({
             ...resumeInfo,
-            summary:summary
+            summary: summary
         })
     }, [summary]);
 
@@ -31,7 +31,7 @@ function Summary({ enabledNext }) {
         setLoading(true)
         const data = {
             data: {
-                summary:summary
+                summary: summary
             }
         }
         GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(res => {
@@ -51,7 +51,8 @@ function Summary({ enabledNext }) {
             <form className='mt-5' onSubmit={onSave}>
                 <div className='flex justify-between items-center'>
                     <label >Add Summary for your job title.</label>
-                    <Button variant="outline" size="sm" className=''>Generate from Ai</Button>
+                    {/* added type button to prevent onSave from being called */}
+                    <Button variant="outline" type="button" size="sm" className='border-black flex gap-2'> <Brain className='h-4 w-4'/>Generate from AI</Button>
                 </div>
                 <Textarea required className='mt-2'
                     onChange={(e) => setSummary(e.target.value)} />
