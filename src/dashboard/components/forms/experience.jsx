@@ -18,21 +18,26 @@ function Experience() {
 
   const handleChange = (index, e) => {
     const newEntries = experienceList.slice();
-    const {name, value} = e.target;
-    newEntries[index][name]= value;
+    const { name, value } = e.target;
+    newEntries[index][name] = value;
     setExperienceList(newEntries);
   }
 
   const addNewExperience = () => {
     setExperienceList([...experienceList, formField])
   }
-  const removeExperience = ()=>{
+  const removeExperience = () => {
     setExperienceList(experienceList => experienceList.slice(0, -1))
   }
+  const handleRichTextEditor = (e,name, index) => {
+    const newEntries = experienceList.slice();
+    newEntries[index][name] = e.target.value;
+    setExperienceList(newEntries);
+  }
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(experienceList)
-  },[experienceList])
+  }, [experienceList])
 
   return (
     <div>
@@ -70,7 +75,7 @@ function Experience() {
                 </div>
                 <div className='col-span-2'>
                   <label className='text-xs ' >Work Description</label>
-                  <RichTextEditor />
+                  <RichTextEditor onRichTextEditorChange={(e) => handleRichTextEditor(e, 'workSummary', index)} />
                 </div>
 
               </div>
@@ -78,7 +83,7 @@ function Experience() {
               <div className='flex justify-between'>
                 <div className='flex gap-2'>
                   <Button onClick={addNewExperience} variant='outline'>+ Add more experience</Button>
-                  <Button  onClick={removeExperience} variant='outline'>Remove</Button>
+                  <Button onClick={removeExperience} variant='outline'>Remove</Button>
                 </div>
                 <Button>Save</Button>
 

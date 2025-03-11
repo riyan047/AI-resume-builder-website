@@ -5,14 +5,15 @@ import {
     EditorProvider, Separator, Toolbar
 } from 'react-simple-wysiwyg'
 
-function RichTextEditor() {
+function RichTextEditor({onRichTextEditorChange}) {
     const [value, setValue] = useState();
 
     return (
         <div>
             <EditorProvider>
                 <Editor value={value} onChange={(e) => {
-                    setValue(e.target.value)
+                    setValue(e.target.value);
+                    onRichTextEditorChange(e)
                 }}>
                     <Toolbar className='w-full'>
                         <BtnBold />
