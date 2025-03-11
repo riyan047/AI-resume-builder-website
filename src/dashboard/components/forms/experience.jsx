@@ -11,25 +11,23 @@ const formField = {
   startDate: '',
   endDate: '',
   workSummary: ''
-
-
 }
 
 function Experience() {
-  const [experienceList, setExperiencedList] = useState([formField])
+  const [experienceList, setExperienceList] = useState([formField])
 
   const handleChange = (index, e) => {
     const newEntries = experienceList.slice();
     const {name, value} = e.target;
     newEntries[index][name]= value;
-    setExperiencedList(newEntries);
+    setExperienceList(newEntries);
   }
 
   const addNewExperience = () => {
-    setExperiencedList([...experienceList, formField])
+    setExperienceList([...experienceList, formField])
   }
   const removeExperience = ()=>{
-    setExperiencedList(experienceList => experienceList.slice(0, -1))
+    setExperienceList(experienceList => experienceList.slice(0, -1))
   }
 
   useEffect(()=>{
