@@ -1,7 +1,8 @@
 import { Input } from '@/components/ui/input'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import RichTextEditor from '../richTextEditor'
+import { ResumeInfoContext } from '@/context/resumeInfoContext'
 
 const formField = {
   title: '',
@@ -15,6 +16,7 @@ const formField = {
 
 function Experience() {
   const [experienceList, setExperienceList] = useState([formField])
+  const {resumeInfo, setResumeInfo} = useContext(ResumeInfoContext);
 
   const handleChange = (index, e) => {
     const newEntries = experienceList.slice();
@@ -36,7 +38,10 @@ function Experience() {
   }
 
   useEffect(() => {
-    console.log(experienceList)
+    setResumeInfo({
+      ...resumeInfo, 
+      experience:experienceList
+    })
   }, [experienceList])
 
   return (
@@ -50,32 +55,32 @@ function Experience() {
             <div key={index}>
               <div className='grid grid-cols-2 gap-3 p-3 border my-5 rounded-lg '>
                 <div>
-                  <label className='text-xs ' >Position Title</label>
+                  <label className='text-md ' >Position Title</label>
                   <Input name='title' onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
-                  <label className='text-xs ' >Company Name</label>
+                  <label className='text-md ' >Company Name</label>
                   <Input name='companyName' onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
-                  <label className='text-xs ' >City</label>
+                  <label className='text-md ' >City</label>
                   <Input name='city' onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
-                  <label className='text-xs ' >State</label>
+                  <label className='text-md ' >State</label>
                   <Input name='state' onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
-                  <label className='text-xs ' >Start Date</label>
+                  <label className='text-md ' >Start Date</label>
                   <Input type='date' name='startDate' onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
-                  <label className='text-xs ' >End Date</label>
+                  <label className='text-md ' >End Date</label>
                   <Input type='date' name='endDate' onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div className='col-span-2'>
-                  <label className='text-xs ' >Work Description</label>
-                  <RichTextEditor onRichTextEditorChange={(e) => handleRichTextEditor(e, 'workSummary', index)} />
+                  <label className='text-md ' >Work Description</label>
+                  <RichTextEditor index={index} onRichTextEditorChange={(e) => handleRichTextEditor(e, 'workSummary', index)} />
                 </div>
 
               </div>
