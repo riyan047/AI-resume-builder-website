@@ -1,9 +1,9 @@
 import { useUser } from '@clerk/clerk-react'
 import './App.css'
-import { Button } from './components/ui/button'
 import { Navigate, Outlet } from 'react-router-dom'
 import Header from './components/custom/header';
-import { Toaster } from './components/ui/toaster';
+import { Toaster } from 'sonner';
+
 
 function App() {
 
