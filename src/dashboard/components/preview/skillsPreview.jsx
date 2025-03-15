@@ -13,7 +13,7 @@ function SkillsPreview({ resumeInfo }) {
                         <div className="h-2 bg-gray-200 w-full ">
                             <div
                                 className="h-2 bg-black transition-all duration-300"
-                                style={{ width: `${skills?.rating}%` }}
+                                style={{ width: `${skills?.rating*20}%` }}
                             ></div>
                         </div>
                     </div>
