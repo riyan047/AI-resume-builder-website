@@ -9,12 +9,11 @@ function SkillsPreview({ resumeInfo }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
                 {resumeInfo?.skills.map((skills, index) => (
                     <div key={index} className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-3 w-full">
-                        <h2 className="text-sm min-w-[80px] shrink-0">{skills?.name}</h2>
+                        <h2 className="text-sm min-w-[120px] max-w-[120px] break-words shrink-0">{skills?.name}</h2>
                         <div className="h-2 bg-gray-200 w-full ">
                             <div
                                 className="h-2 bg-black transition-all duration-300"
-                                style={{ width: `${skills?.rating*20}%` }}
-                            ></div>
+                                style={{ width: `${Math.min(skills?.rating * 20, 100)}%` }}                            ></div>
                         </div>
                     </div>
                 ))}

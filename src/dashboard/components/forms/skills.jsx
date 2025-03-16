@@ -59,11 +59,11 @@ function Skills() {
     }
 
     useEffect(() => {
-        setResumeInfo({
-            ...resumeInfo,
-            Skills: skillsList
-        })
-    }, [skillsList])
+        setResumeInfo(prev => ({
+            ...prev,
+            skills: skillsList
+        }));
+    }, [skillsList, setResumeInfo]);
 
     return (
         <div className='p-5 shadow-lg rounded-lg mt-2 ' >
