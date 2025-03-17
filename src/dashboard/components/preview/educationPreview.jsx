@@ -7,7 +7,7 @@ function EducationPreview({ resumeInfo }) {
       <hr className='border-black border-[1.5px]' />
 
       {
-        resumeInfo?.education.map((education, index) => (
+        resumeInfo?.education?.map((education, index) => (
           <div key={index} className='my-5'>
             <h2 className='text-sm font-bold'>{education?.universityName}</h2>
             <h2 className='text-xs flex justify-between'>{education?.degree} in {education?.major}

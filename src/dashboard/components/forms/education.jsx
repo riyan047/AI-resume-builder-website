@@ -52,7 +52,7 @@ function Education() {
         setLoading(true)
         const data ={
             data:{
-                Education:educationList
+                education:educationList
             }
         }
 
