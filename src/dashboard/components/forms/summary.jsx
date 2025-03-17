@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import GlobalApi from './../../../../service/GlobalApi';
 import { Brain, LoaderCircle } from 'lucide-react';
 import { useParams } from 'react-router-dom';
-import { toast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 import { AIChatSession } from './../../../../service/AIModel';
 
 const prompt = "Job Title: {jobTitle} , Depends on job title give me list of  summery for 3 experience level, Mid Level and Freasher level in 3 -4 lines in array format, With summery and experience_level Field in JSON Format"
@@ -59,9 +59,9 @@ function Summary({ enabledNext }) {
             console.log(res)
             enabledNext(true);
             setLoading(false);
-            toast({
-                description: "Details Updated"
-            })
+            toast(
+                "Details Updated"
+            )
         }, (error) => { setLoading(false) });
     }
 

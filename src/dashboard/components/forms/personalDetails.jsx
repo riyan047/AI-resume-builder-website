@@ -5,7 +5,7 @@ import { LoaderCircle } from 'lucide-react';
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import GlobalApi from './../../../../service/GlobalApi';
-import { toast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 
 function PersonalDetails({enabledNext}) {
 
@@ -45,9 +45,7 @@ function PersonalDetails({enabledNext}) {
       console.log(res)
       enabledNext(true);
       setLoading(false);
-      toast({
-        description: "Details Updated",
-      })
+      toast('details updated!')
     }, (error)=>{setLoading(false)} );
 
   }

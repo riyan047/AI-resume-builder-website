@@ -14,7 +14,9 @@ const CreateNewResume = (data) => axiosClient.post('/user-resumes', data)
 
 const GetUserResumes = (userEmail) => axiosClient.get('/user-resumes?filters[userEmail][$eq]='+userEmail);
 
-const UpdateResumeDetails = (id, data) => axiosClient.put('/user-resumes/'+id,data)
+const UpdateResumeDetails = (id, data) => axiosClient.put(`/user-resumes/${id}`, {
+    data: data.data || data // Handle both cases where data might already be wrapped
+});
 
 export default {
     CreateNewResume,

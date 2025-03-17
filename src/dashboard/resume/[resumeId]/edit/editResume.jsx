@@ -9,7 +9,7 @@ import { Form, useParams } from 'react-router-dom'
 
 function EditResume() {
   const params = useParams();
-  const [resumeInfo, setResumeInfo] = useState();
+  const [resumeInfo, setResumeInfo] = useState(dummy);
 
 
   useEffect(() => {

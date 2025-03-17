@@ -15,7 +15,7 @@ function Skills() {
         name: '',
         rating: 0
     }]);
-    const { resumeId } = useParams();
+    const params = useParams();
     const [loading, setLoading] = useState(false);
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
@@ -46,7 +46,7 @@ function Skills() {
                 skills: skillsList
             }
         }
-        GlobalApi.UpdateResumeDetails(resumeId, data).then(resp => {
+        GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(resp => {
             console.log(resp)
             setLoading(false)
             toast('details updated!')
