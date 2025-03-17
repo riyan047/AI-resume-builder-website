@@ -77,7 +77,7 @@ function Skills() {
                             <label className=''>Name</label>
                             <Input onChange={(e) => handleChange(index, 'name', e.target.value)} />
                         </div>
-                        <Rating style={{ maxWidth: 150 }} value={item.rating} onChange={(v) => handleChange(index, 'rating', v)} />
+                        <Rating className='ml-2 pt-4' style={{ maxWidth: 150 }} value={item.rating} onChange={(v) => handleChange(index, 'rating', v)} />
                     </div>
 
                 ))}
