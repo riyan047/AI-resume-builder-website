@@ -53,7 +53,7 @@ function Skills() {
         }, (error) => {
             setLoading(false);
             console.log(error);
-            toast('Error saving the data, please try again')
+            toast('Error saving the data, please try again later')
         })
 
     }

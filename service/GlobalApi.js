@@ -18,8 +18,11 @@ const UpdateResumeDetails = (id, data) => axiosClient.put(`/user-resumes/${id}`,
     data: data.data || data // Handle both cases where data might already be wrapped
 });
 
+const GetResumeById = (id)=> axiosClient.get('/user-resumes/'+id +'?populate=*')
+
 export default {
     CreateNewResume,
     GetUserResumes,
-    UpdateResumeDetails
+    UpdateResumeDetails,
+    GetResumeById
 }
