@@ -10,7 +10,7 @@ import {
 import { AIChatSession } from './../../../service/AIModel';
 import { toast } from 'sonner';
 
-const PROMPT = 'position titile: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume, give me result in a array'
+const PROMPT = 'position titile: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume, give me result in a array strictly'
 
 function RichTextEditor({ onRichTextEditorChange, index }) {
     const [value, setValue] = useState();
@@ -26,6 +26,7 @@ function RichTextEditor({ onRichTextEditorChange, index }) {
         const prompt = PROMPT.replace('{positionTitle}', resumeInfo.experience[index].title);
         const result = await AIChatSession.sendMessage(prompt);
         const resp = result.response.text();
+        console.log(resp)
         setValue(resp.replace('[','').replace(']',''));
         setLoading(false)
     }

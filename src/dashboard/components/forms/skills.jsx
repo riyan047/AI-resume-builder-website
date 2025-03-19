@@ -43,7 +43,7 @@ function Skills() {
         setLoading(true)
         const data = {
             data: {
-                skills: skillsList
+                skills: skillsList.map(({ id, ...rest }) => rest)
             }
         }
         GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(resp => {
