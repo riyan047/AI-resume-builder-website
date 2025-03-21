@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import PersonalDetails from './forms/personalDetails';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ArrowRight, LayoutGrid } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Home, LayoutGrid } from 'lucide-react';
 import Summary from './forms/summary';
 import Experience from './forms/experience';
 import Education from './forms/education';
 import Skills from './forms/skills';
+import { Link } from 'react-router-dom';
 
 function FormSection() {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
@@ -13,16 +14,19 @@ function FormSection() {
 
   return (
     <div>
-      <div className=' flex justify-between items-center'>
-        {/* theme button */}
-        <Button className='flex gap-2' size='sm'> <LayoutGrid /> Theme</Button>
-        <div className='flex gap-2'>
+
+      <div className=' flex justify-between items-center mb-4'>
+        {/* Home button */}
+        <Link to={'/dashboard'}>
+          <Button className='flex gap-2 hover:scale-105' size='sm'> <Home /></Button>
+        </Link>
+        <div className='flex gap-2 '>
           {activeFormIndex > 1 &&
-            <Button size='sm' onClick={() => setActiveFormIndex(activeFormIndex - 1)}> <ArrowLeft /> </Button>}
+            <Button className='hover:scale-105' size='sm' onClick={() => setActiveFormIndex(activeFormIndex - 1)}> <ArrowLeft /> </Button>}
 
           <Button
             // disabled={!enabledNext}
-            className='flex gap-2' size='sm' onClick={() => setActiveFormIndex(activeFormIndex + 1)}>Next
+            className='flex gap-2 hover:scale-105' size='sm' onClick={() => setActiveFormIndex(activeFormIndex + 1)}>Next
             <ArrowRight /></Button>
         </div>
       </div>
