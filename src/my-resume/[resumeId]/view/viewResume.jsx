@@ -43,6 +43,7 @@ function ViewResume() {
                 </div>
             </div>
         </ResumeInfoContext.Provider>
+        
     )
 }
 
