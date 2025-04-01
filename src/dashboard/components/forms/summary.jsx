@@ -36,11 +36,11 @@ function Summary({ enabledNext }) {
     console.log(responseText);
 
     try {
-        const parsedData = JSON.parse(responseText); // Convert to JSON
-        setAiGeneratedSummaryList(parsedData.summaries || []); // Extract summaries array
+        const parsedData = JSON.parse(responseText); 
+        setAiGeneratedSummaryList(parsedData.summaries || []); 
     } catch (error) {
         console.error("JSON Parsing Error:", error);
-        setAiGeneratedSummaryList([]); // Set empty array on error
+        setAiGeneratedSummaryList([]); 
     }
 
     setLoading(false);
@@ -76,7 +76,7 @@ function Summary({ enabledNext }) {
                     <Button variant="outline" type="button" size="sm" className='border-black flex gap-2' onClick={() => GenerateSummaryFromAI()}
                     > <Brain className='h-4 w-4'/>Generate from AI</Button>
                 </div>
-                <Textarea required className='mt-2'
+                <Textarea required className='mt-2' value={summary}
                     onChange={(e) => setSummary(e.target.value)} />
                 <div className='mt-2 flex justify-end'>
                     <Button

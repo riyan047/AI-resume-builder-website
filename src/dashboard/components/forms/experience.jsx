@@ -15,7 +15,8 @@ const formField = {
   state: '',
   startDate: '',
   endDate: '',
-  workSummary: ''
+  workSummary: '',
+  currentlyWorking: false,
 }
 
 function Experience() {
@@ -25,11 +26,20 @@ function Experience() {
   const params = useParams();
 
   const handleChange = (index, e) => {
-    const newEntries = experienceList.slice();
-    const { name, value } = e.target;
-    newEntries[index][name] = value;
+    const newEntries = [...experienceList];
+    const { name, value, type, checked } = e.target;
+
+    if (type === 'checkbox') {
+      newEntries[index]['currentlyWorking'] = checked;
+      if (checked) {
+        newEntries[index]['endDate'] = ''; 
+      }
+    } else {
+      newEntries[index][name] = value;
+    }
+
     setExperienceList(newEntries);
-  }
+  };
 
   const addNewExperience = () => {
     setExperienceList([...experienceList, formField])
@@ -98,12 +108,27 @@ function Experience() {
                   <Input name='state' onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
-                  <label className='text-md ' >Start Date</label>
+                  <label className='text-md'>Start Date</label>
                   <Input type='date' name='startDate' onChange={(e) => handleChange(index, e)} />
                 </div>
+
                 <div>
-                  <label className='text-md ' >End Date</label>
-                  <Input type='date' name='endDate' onChange={(e) => handleChange(index, e)} />
+                  <label className='text-md'>End Date</label>
+                  <Input
+                    type='date'
+                    name='endDate'
+                    onChange={(e) => handleChange(index, e)}
+                    disabled={item.currentlyWorking} 
+                  />
+                </div>
+                <div className='flex items-center'>
+                  <input
+                    type="checkbox"
+                    id={`currentlyWorking-${index}`}
+                    checked={item.currentlyWorking}
+                    onChange={(e) => handleChange(index, e)}
+                  />
+                  <label htmlFor={`currentlyWorking-${index}`} className='ml-2'>Presently Working</label>
                 </div>
                 <div className='col-span-2'>
                   <label className='text-md ' >Work Description</label>
