@@ -60,7 +60,7 @@ function AddResume() {
         <div>
 
             <div className=' p-14 py-24 border border-dashed 
-                flex justify-center items-center bg-secondary rounded-lg h-[280px] 
+                flex justify-center items-center bg-secondary rounded-lg h-[340px] 
                 hover:scale-105 transition-all hover:shadow-md cursor-pointer'
             onClick={()=> setOpenDialog(true)}>
                     

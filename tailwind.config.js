@@ -7,6 +7,12 @@ export default {
   ],
   theme: {
   	extend: {
+		colors: {
+        customBlue: 'rgba(60,149,241,1)',
+        customLightBlue: 'rgba(196,223,251,1)',
+      },backgroundImage: {
+        'custom-gradient': 'linear-gradient(to bottom right, rgba(60,149,241,1), rgba(196,223,251,1))',
+      },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

@@ -7,17 +7,17 @@ import { Toaster } from 'sonner';
 
 function App() {
 
-  const {user, isLoaded, isSignedIn} = useUser();
+  const { user, isLoaded, isSignedIn } = useUser();
 
-  if(!isSignedIn && isLoaded){
+  if (!isSignedIn && isLoaded) {
     return <Navigate to={'auth/sign-in'} />
   }
-  
+
   return (
     <>
       <Header />
       <Outlet />
-       <Toaster />
+      <Toaster />
     </>
   )
 }
