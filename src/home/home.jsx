@@ -2,6 +2,7 @@ import Header from '@/components/custom/header'
 import { UserButton } from '@clerk/clerk-react'
 import { Brain, FileText, Sparkles, Zap, ChevronRight, Check, Code, Users, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { FaLinkedin, FaTwitter } from "react-icons/fa";
 
 function Home() {
   return (
@@ -15,7 +16,7 @@ function Home() {
               <Sparkles className="w-4 h-4 text-blue-400 mr-2" />
               <span className="text-blue-300 text-sm">AI-Powered Resume Builder</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-gray-200 to-blue-400 text-transparent bg-clip-text">
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-gray-200 to-blue-400 text-transparent bg-clip-text p-4">
               Create Your Perfect Resume
               <br />With AI Intelligence
             </h1>
@@ -54,7 +55,7 @@ function Home() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Smart Templates</h3>
                 <p className="text-gray-300">
-                  Choose from dozens of ATS-optimized templates designed for your industry.
+                  Build your resume with ATS-optimized templates designed for your industry.
                 </p>
               </div>
               <div className="bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-gray-800 hover:border-gray-700 transition">
@@ -63,7 +64,7 @@ function Home() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Skill Analysis</h3>
                 <p className="text-gray-300">
-                  AI-powered skill suggestions and job market analysis to make your resume stand out.
+                  AI-powered job description and skills suggestions to make your resume stand out.
                 </p>
               </div>
             </div>

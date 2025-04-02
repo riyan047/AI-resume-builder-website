@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import GlobalApi from './../../../../service/GlobalApi'
 import { useParams } from 'react-router-dom'
 import { RWebShare } from 'react-web-share'
+import { Download, Share2 } from 'lucide-react'
 
 function ViewResume() {
     const [resumeInfo, setResumeInfo] = useState();
@@ -21,41 +22,95 @@ function ViewResume() {
             setResumeInfo(resp.data.data)
         })
     }
+
     const handleDownload = () => {
-        window.print();
+        const style = document.createElement('style');
+        style.textContent = `
+        @media print {
+            @page { 
+                size: A4 portrait; 
+                margin: 0; 
+            }
+            body { 
+                margin: 0;
+                padding: 0;
+            }
+            #printArea {
+                width: 21cm;
+                margin: 0 auto;
+                box-shadow: none;
+                transform: scale(1);
+                transform-origin: top center;
+            }
+            #noPrintArea { 
+                display: none !important; 
+            }
+            .progress-bar { 
+                display: block !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .progress-fill {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    `;
+        document.head.appendChild(style);
+
+        // Force a slight delay to ensure styles are applied
+        setTimeout(() => {
+            window.print();
+            document.head.removeChild(style);
+        }, 100);
     }
 
     return (
         <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
-            <div id='noPrintArea'>
+            <div id='noPrintArea' className="bg-gray-50">
                 <Header />
-                <div className='my-10 mx-10 md:mx-20 lg:mx-36'>
-                    <h2 className='text-center text-2xl font-medium'>Congrats! Your ultimate AI generated resume is ready!</h2>
-                    <p className='text-center text-gray-400'>Now you are ready to download your resume and you can share your unique resume url with your friends and family</p>
-                    <div className='flex  justify-between my-10 px-30'>
-                        <Button onClick={handleDownload}>Download</Button>
-                        <Button>
-                            <RWebShare
-                                data={{
-                                    text: "Click on the link to checkout my resume",
-                                    url: import.meta.env.VITE_BASE_URL + "/my-resumes" + resumeId + "/view",
-                                    title: `${resumeInfo?.firstName} ${resumeId?.lastName}`,
-                                }}
-                                onClick={() => console.log("shared successfully!")}
-                            >
-                                <button>Share 🔗</button>
-                            </RWebShare>
+                <div className='py-10 px-4 max-w-4xl mx-auto'>
+                    <h2 className='text-center text-3xl font-bold text-gray-900 mb-4'>
+                        Your AI-Generated Resume is Ready!
+                    </h2>
+                    <p className='text-center text-gray-600 mb-8 max-w-2xl mx-auto'>
+                        Download your professional resume or share it with others using the unique URL
+                    </p>
+                    <div className='flex justify-center gap-4 mb-10'>
+                        <Button
+                            onClick={handleDownload}
+                            className="flex items-center gap-2"
+                            size="lg"
+                        >
+                            <Download className="w-4 h-4" />
+                            Download PDF
                         </Button>
+                        <RWebShare
+                            data={{
+                                text: "Check out my professional resume",
+                                url: `${import.meta.env.VITE_BASE_URL}/my-resumes/${resumeId}/view`,
+                                title: `${resumeInfo?.firstName} ${resumeInfo?.lastName}'s Resume`,
+                            }}
+                            onClick={() => console.log("shared successfully!")}
+                        >
+                            <Button
+                                variant="outline"
+                                className="flex items-center gap-2"
+                                size="lg"
+                            >
+                                <Share2 className="w-4 h-4" />
+                                Share Resume
+                            </Button>
+                        </RWebShare>
                     </div>
                 </div>
             </div>
-            <div className='my-10 md:mx-20 lg:mx-36'>
-                <div id='printArea'>
+            <div className='max-w-4xl mx-auto px-4 mb-20'>
+                <div id='printArea' className="bg-white shadow-lg rounded-lg overflow-hidden">
                     <ResumePreviewSection />
                 </div>
             </div>
         </ResumeInfoContext.Provider>
-
     )
 }
 
