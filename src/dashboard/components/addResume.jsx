@@ -3,7 +3,6 @@ import { useState } from 'react';
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useUser } from '@clerk/clerk-react';
-
 import {
     Dialog,
     DialogContent,
@@ -17,16 +16,12 @@ import { Input } from '@/components/ui/input';
 import GlobalApi from './../../../service/GlobalApi';
 import { useNavigate } from 'react-router-dom';
 
-
-
 function AddResume() {
-
     const [openDialog, setOpenDialog] = useState(false);
     const [resumeTitle, setResumeTitle]= useState();
     const [loading, setLoading] = useState(false);
     const {user} = useUser() ;
     const navigate = useNavigate();
-
 
     const onCreate = () =>{
         setLoading(true);
@@ -51,14 +46,11 @@ function AddResume() {
         }, (error) => {
             setLoading(false)
 
-        })
-        
-        
+        }) 
     }
 
     return (
         <div>
-
             <div className=' p-14 py-24 border border-dashed 
                 flex justify-center items-center bg-secondary rounded-lg h-[340px] 
                 hover:scale-105 transition-all hover:shadow-md cursor-pointer'
@@ -88,8 +80,6 @@ function AddResume() {
                             </Button>
                         <Button onClick={()=> setOpenDialog(false)} variant="ghost">Cancel</Button>
                         </div>
-                        
-
                     </DialogHeader>
                 </DialogContent>
             </Dialog>

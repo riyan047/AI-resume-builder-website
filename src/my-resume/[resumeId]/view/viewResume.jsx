@@ -18,7 +18,6 @@ function ViewResume() {
 
     const GetResumeInfo = () => {
         GlobalApi.GetResumeById(resumeId).then(resp => {
-            console.log(resp.data.data);
             setResumeInfo(resp.data.data)
         })
     }
@@ -58,7 +57,7 @@ function ViewResume() {
     `;
         document.head.appendChild(style);
 
-        // Force a slight delay to ensure styles are applied
+        // Slight delay to ensure styles are applied
         setTimeout(() => {
             window.print();
             document.head.removeChild(style);

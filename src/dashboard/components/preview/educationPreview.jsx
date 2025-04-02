@@ -5,7 +5,6 @@ function EducationPreview({ resumeInfo }) {
     <div>
       <h2 className='text-center font-bold text-sm  mb-2'>Education</h2>
       <hr className='border-black border-[1.5px]' />
-
       {
         resumeInfo?.education?.map((education, index) => (
           <div key={index} className='my-5'>

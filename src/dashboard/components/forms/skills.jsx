@@ -20,14 +20,14 @@ function Skills() {
     const [loading, setLoading] = useState(false);
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
-    // Initialize with existing data or empty form
+    
     useEffect(() => {
         if (resumeInfo?.skills && resumeInfo.skills.length > 0) {
             setSkillsList(resumeInfo.skills);
         } else {
             setSkillsList([formField]);
         }
-    }, [resumeInfo?.skills]); // Fixed dependency from skillsList to skills
+    }, [resumeInfo?.skills]); 
 
     useEffect(() => {
         if (skillsList?.length > 0) {

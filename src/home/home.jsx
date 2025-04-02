@@ -157,6 +157,22 @@ function Home() {
               </div>
               <div className="text-gray-400 text-sm">
                 © 2025 ResumeCraft. All rights reserved.
+                <div className='flex py-2 items-center'>
+                  <a
+                    href="https://www.linkedin.com/in/riyan-g"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "blue" }}
+                  > <FaLinkedin size={24} style={{ marginRight: "8px" }} />
+                  </a>
+                  <a
+                    href="https://x.com/Riyan50889755"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "blue" }}
+                  > <FaTwitter size={24} style={{ marginRight: "8px" }} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

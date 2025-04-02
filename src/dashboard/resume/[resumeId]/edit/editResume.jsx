@@ -1,4 +1,3 @@
-
 import { ResumeInfoContext } from '@/context/resumeInfoContext';
 import FormSection from '@/dashboard/components/formSection';
 import ResumePreviewSection from '@/dashboard/components/resumePreview';
@@ -13,11 +12,8 @@ function EditResume() {
   const {resumeId} = useParams();
   const [resumeInfo, setResumeInfo] = useState();
   
-  
   useEffect(() => {
-    
     GetResumeInfo();
-    
   }, [])
   
   const GetResumeInfo = () => {

@@ -11,11 +11,10 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 function FormSection() {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
   const [enabledNext, setEnabledNext] = useState(false);
-  const {resumeId} = useParams();
+  const { resumeId } = useParams();
 
   return (
     <div>
-
       <div className=' flex justify-between items-center mb-4'>
         {/* Home button */}
         <Link to={'/dashboard'}>
@@ -32,7 +31,6 @@ function FormSection() {
         </div>
       </div>
 
-
       {activeFormIndex == 1 ? <PersonalDetails enabledNext={(v) => setEnabledNext(v)} /> :
         activeFormIndex == 2 ? <Summary enabledNext={(v) => setEnabledNext(v)} /> :
           activeFormIndex == 3 ? <Experience enabledNext={(v) => setEnabledNext(v)} /> :
@@ -40,14 +38,6 @@ function FormSection() {
               activeFormIndex == 5 ? <Skills /> :
                 activeFormIndex == 6 ? <Navigate to={`/my-resume/${resumeId}/view`} /> :
                   null}
-
-      {/* Experience  */}
-
-
-      {/* Educational details  */}
-
-
-      {/* Skills  */}
 
     </div>
   )
