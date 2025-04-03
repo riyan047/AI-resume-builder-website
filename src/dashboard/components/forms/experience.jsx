@@ -1,6 +1,6 @@
 import { Input } from '@/components/ui/input'
 import React, { useContext, useEffect, useState } from 'react'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 import RichTextEditor from '../richTextEditor'
 import { ResumeInfoContext } from '@/context/resumeInfoContext'
 import { UserCircle as LoaderCircle } from 'lucide-react'
