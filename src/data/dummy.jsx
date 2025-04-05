@@ -1,8 +1,8 @@
 export default {
-    firstName: 'James',
-    lastName: 'Carter',
+    firstName: 'Jimmy',
+    lastName: 'Carl',
     jobTitle: 'full stack developer',
-    address: '525 N tryon Street, NC 28117',
+    address: '525 N Street, NC 28117',
     phone: '(123)-456-7890',
     email: 'example@gmail.com',
     themeColor: "#ff6666",

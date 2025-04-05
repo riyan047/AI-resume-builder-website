@@ -6,12 +6,12 @@ import { Brain } from 'lucide-react';
 
 function Header() {
   const { isSignedIn } = useUser();
-  const location = useLocation(); // current route
+  const location = useLocation(); // to get current route
 
-  // background style is based on path
+ 
   const getBackground = () => {
     if (location.pathname === '/') {
-      return ''; // Landing Page
+      return ''; 
     } else {
       return 'bg-gradient-to-br from-black via-zinc-900 to-neutral-900'; // Other Pages
     }
@@ -43,7 +43,7 @@ function Header() {
           <UserButton />
         </div>
       ) : (
-        <Link to={'/auth/sign-in'}>
+        <Link to={'/auth/sign-up'}>
           <Button variant="outline"> Get Started</Button>
         </Link>
       )}

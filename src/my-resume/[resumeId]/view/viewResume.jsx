@@ -57,7 +57,6 @@ function ViewResume() {
     `;
         document.head.appendChild(style);
 
-        // Slight delay to ensure styles are applied
         setTimeout(() => {
             window.print();
             document.head.removeChild(style);

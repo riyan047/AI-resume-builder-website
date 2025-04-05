@@ -8,7 +8,13 @@ import { useParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { AIChatSession } from './../../../../service/AIModel'
 
-const prompt = "Job Title: {jobTitle} , Depends on job title give me list of  summary for 3 experience level, Mid Level and Freasher level in 3 -4 lines in array format, With summery and experience_level Field in JSON Format"
+const prompt = `Job Title: {jobTitle}. Based on this job title, generate summaries for 3 experience levels: Entry-level, Mid-level, and Senior. 
+Each summary should be 3-4 lines long. Return the result strictly in raw JSON format without markdown, quotes, or code blocks. 
+Format:
+[
+  { "experience_level": "Entry", "summary": "..." },
+  ...
+]`;
 
 function Summary({ enabledNext }) {
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
@@ -17,7 +23,6 @@ function Summary({ enabledNext }) {
     const params = useParams();
     const [aiGeneratedSummaryList, setAiGeneratedSummaryList] = useState([]);
 
-    // Initialize with existing data
     useEffect(() => {
         if (resumeInfo?.summary) {
             setSummary(resumeInfo.summary);
@@ -36,26 +41,27 @@ function Summary({ enabledNext }) {
     const GenerateSummaryFromAI = async () => {
         setLoading(true);
         const PROMPT = prompt.replace('{jobTitle}', resumeInfo?.jobTitle || '');
+        console.log(PROMPT)
+
+        const output = await AIChatSession.sendMessage(PROMPT);
+        const responseText = await output.response.text();
+        const cleanText = responseText
+            .replace(/```json/i, '')  
+            .replace(/```/, '')       
+            .trim();                  
 
         try {
-            const result = await AIChatSession.sendMessage(PROMPT);
-            const responseText = await result.response.text();
-
-            try {
-                const parsedData = JSON.parse(responseText);
-                setAiGeneratedSummaryList(parsedData.summaries || []);
-            } catch (error) {
-                console.error("JSON Parsing Error:", error);
-                setAiGeneratedSummaryList([]);
-                toast('Error parsing AI response');
-            }
-        } catch (error) {
-            console.error("AI Generation Error:", error);
-            toast('Error generating summary from AI');
-        } finally {
-            setLoading(false);
+            const parsedData = JSON.parse(cleanText);
+            setAiGeneratedSummaryList(parsedData || []);
+            console.log(parsedData);
+        } catch (e) {
+            console.error('Failed to parse JSON:', e);
+            toast('Invalid AI response format. Please try again.');
         }
+
+        setLoading(false);
     };
+
 
     const onSave = (e) => {
         e.preventDefault();

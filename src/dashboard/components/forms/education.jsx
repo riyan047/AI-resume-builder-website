@@ -23,7 +23,7 @@ function Education() {
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
     const params = useParams();
 
-    // Initialize with existing data or empty form
+    
     useEffect(() => {
         if (resumeInfo?.education && resumeInfo.education.length > 0) {
             setEducationList(resumeInfo.education);

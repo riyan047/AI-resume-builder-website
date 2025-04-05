@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { ResumeInfoContext } from '@/context/resumeInfoContext';
 import { Brain, LoaderCircle } from 'lucide-react';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
     BtnBold, BtnBulletList, BtnItalic,
     BtnLink, BtnNumberedList, BtnStrikeThrough, BtnUnderline, Editor,
@@ -10,10 +10,11 @@ import {
 import { AIChatSession } from './../../../service/AIModel';
 import { toast } from 'sonner';
 
-const PROMPT = 'position titile: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume, give me result in a array strictly and seperate point by numbering them'
+const PROMPT = `Position Title: {positionTitle}. Based on this role, write 5-7 professional experience bullet points suitable for a resume. 
+Each point should be numbered (e.g., 1., 2., 3., etc.) and written in plain text. Do not include any brackets, quotes, or array format and introduction sentence.`;
 
-function RichTextEditor({ onRichTextEditorChange, index }) {
-    const [value, setValue] = useState();
+function RichTextEditor({ onRichTextEditorChange, index, value: propValue }) {
+    const [value, setValue] = useState(propValue);
     const[loading, setLoading] = useState(false);
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
 
@@ -30,6 +31,10 @@ function RichTextEditor({ onRichTextEditorChange, index }) {
         setValue(resp.replace('[','').replace(']',''));
         setLoading(false)
     }
+
+    useEffect(()=>{
+        setValue(propValue)
+    },[propValue])
 
     return (
         <div>

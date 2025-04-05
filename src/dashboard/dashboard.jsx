@@ -14,7 +14,6 @@ function Dashboard() {
     user && GetResumeList()
   },[user])
 
-    //fetching user resume list based on the email address
   const GetResumeList = () => {
     GlobalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress)
     .then(res => {

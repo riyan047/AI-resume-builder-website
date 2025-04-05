@@ -37,7 +37,6 @@ function AddResume() {
         }
         GlobalApi.CreateNewResume(data).then(res =>{
            
-            //every strapi resumeid had its own document id
             const documentId = res.data.data.documentId
             if(res){
                 setLoading(false);
