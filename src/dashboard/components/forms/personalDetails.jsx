@@ -20,6 +20,7 @@ function PersonalDetails({ enabledNext }) {
     email: ''
   });
 
+  // Initialize form with existing data
   useEffect(() => {
     if (resumeInfo) {
       setFormData({

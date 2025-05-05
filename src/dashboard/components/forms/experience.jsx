@@ -25,6 +25,7 @@ function Experience() {
   const [loading, setLoading] = useState(false);
   const params = useParams();
 
+  // Initialize with existing data or empty form
   useEffect(() => {
     if (resumeInfo?.experience && resumeInfo.experience.length > 0) {
       setExperienceList(resumeInfo.experience);

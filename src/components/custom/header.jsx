@@ -13,7 +13,7 @@ function Header() {
     if (location.pathname === '/') {
       return ''; 
     } else {
-      return 'bg-gradient-to-br from-black via-zinc-900 to-neutral-900'; // Other Pages
+      return 'bg-gradient-to-br from-black via-zinc-900 to-neutral-900'; 
     }
   };
 
